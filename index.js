@@ -1,27 +1,15 @@
 var fs = require('fs');
 var path = require('path');
 
-module.exports = function posthtmlStyleToFile(options) {
-    options = options || { path: './result.css' };
+module.exports = function(options) {
+    options = options || { path: './index.js' };
 
     var buf = '';
 
     return function(tree) {
 
-        tree.match({ tag: 'style' }, function(node) {
+        tree.match({ tag: 'script' }, function(node) {
             buf += node.content[0].trim() || '';
-            return node;
-        });
-
-        tree.match({ attrs: { style: true }}, function(node) {
-            var cls = '';
-            node.attrs.class &&
-                (cls = '.' + (node.attrs.class.split(' ')).join('.'));
-
-            buf += '\n' +
-                node.tag +
-                (node.attrs.id? ('#' + node.attrs.id ): '') +
-                cls + '{' + node.attrs.style + '}';
             return node;
         });
 
