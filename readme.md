@@ -1,7 +1,4 @@
-[![NPM][npm]][npm-url]
-[![Deps][deps]][deps-url]
-[![Tests][travis]][travis-url]
-[![Coverage][cover]][cover-url]
+
 
 # posthtml-script-to-file
 
